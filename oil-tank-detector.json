@@ -5,7 +5,7 @@
         "isPublic": false,
         "timeout": 7200
     },
-    "version": "0.0.1",
+    "version": "0.0.2",
     "inputPortDescriptors": [
         {
             "name": "image",
