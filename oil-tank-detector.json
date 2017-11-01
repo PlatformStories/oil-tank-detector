@@ -1,0 +1,57 @@
+{
+    "name": "oil-tank-detector",
+    "description": "A GBDX task that detects oil tanks with max-tree filtering.",
+    "properties": {
+        "isPublic": false,
+        "timeout": 7200
+    },
+    "version": "0.0.1",
+    "inputPortDescriptors": [
+        {
+            "name": "image",
+            "type": "directory",
+            "description": "Contains input panchromatic image in UTM projection. If more than one images are contained in this directory, one is picked arbitrarily.",
+            "required": true
+        },
+        {
+            "name": "bbox",
+            "type": "string",
+            "description": "Bounding box coordinates in lat/long. The format is 'W,S,E,N'. Default is None (entire input image).",
+            "required": false
+        },
+        {
+            "name": "min_compactness",
+            "type": "string",
+            "description": "Minimum compactness. Default is 0.95.",
+            "required": false
+        },
+        {
+            "name": "min_size",
+            "type": "string",
+            "description": "Minimum area in m2. Default is 100.",
+            "required": false
+        },
+        {
+            "name": "max_size",
+            "type": "string",
+            "description": "Maximum area in m2. Default is 12000.",
+            "required": false
+        }
+    ],
+    "outputPortDescriptors": [
+      {
+          "name": "detections",
+          "type": "directory",
+          "description": "Contains geojson file with detection bounding boxes."
+      }
+    ],
+    "containerDescriptors": [
+        {
+            "type": "DOCKER",
+            "properties": {
+                "image": "tdgp/oil-tank-detector"
+            },
+            "command": "python /oil-tank-detector.py"
+        }
+    ]
+}
