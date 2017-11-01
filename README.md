@@ -6,10 +6,6 @@ The algorithm uses morphological operations to increase the compactness of oil t
 
 Check out [circular-tank-detector](https://github.com/platformstories/circular-tank-detector) for a more accurate solution to the problem of oil tank detection.
 
-**Comments**
-
-+ Depending on the specified minimum compactness, compact features other than oil tanks might be detected. Keep in mind that detection is based on purely geometric properties.
-+ If the input image size is > 3-4GB, then specify a smaller area bounding box.
 
 ## Run
 
@@ -34,8 +30,8 @@ wf.execute()
 
 | Name  | Type |  Description | Required |
 |-------|--------------|----------------|----------------|
-| image | Directory | Contains input panchromatic image in UTM projection. If more than one images are contained in this directory, one is picked arbitrarily. | True |
-| bbox | String | Bounding box coordinates in lat/long. The format is 'W,S,E,N'. Default is None (entire input image). | False |
+| image | directory | Contains input panchromatic image in UTM projection. If more than one images are contained in this directory, one is picked arbitrarily. | True |
+| bbox | string | Bounding box coordinates in lat/long. The format is 'W,S,E,N'. Default is None (entire input image). | False |
 | min_compactness | string | Minimum compactness. Default is 0.95. | False |
 | min_size | string | Minimum area in m2. Default is 100. | False |
 | max_size | string | Maximum area in m2. Default is 12000. | False |
@@ -46,6 +42,13 @@ wf.execute()
 | Name  | Type | Description                                    |
 |-------|---------|---------------------------------------------------|
 | detections | directory | Contains geojson file with detection bounding boxes. |
+
+
+## Comments
+
++ Depending on the specified minimum compactness, compact features other than oil tanks might be detected. Keep in mind that detection is based on purely geometric properties.
++ If the input image size exceeds 1GB, then specify a smaller area bounding box using the input bbox parameter.
+
 
 ## Development
 
